@@ -10,7 +10,7 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "AEn50/7vQ7dr"
+#define SERIAL_NUMBER "AEn50/dPawvx"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 1
 
