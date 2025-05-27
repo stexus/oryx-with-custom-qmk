@@ -232,8 +232,7 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
             case KC_K:
             case KC_L:
             case KC_SCLN:
-              return FLOW_TAP_TERM + 100;  // Short timeout on these keys.
-
+              return 150;
             default:
               return FLOW_TAP_TERM;
         }
