@@ -216,3 +216,21 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
   'L', 'L', 'L', 'L', 'L', 'L',             'R', 'R', 'R', 'R', 'R', 'R',
                            '*', '*',   '*', '*'
   );
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, 
+                           uint16_t prev_keycode) {
+    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        switch (keycode) {
+            case KC_A:
+            case KC_S:
+            case KC_D:
+            case KC_K:
+            case KC_L:
+            case KC_SCLN:
+              return FLOW_TAP_TERM + 100;  // Short timeout on these keys.
+
+            default:
+              return FLOW_TAP_TERM;
+        }
+    }
+    return 0;
+}
