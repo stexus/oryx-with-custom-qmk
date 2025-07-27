@@ -157,6 +157,7 @@ combo_t key_combos[COMBO_COUNT] = {
 // MY EDITS
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LT(2, KC_BSPC):
         case LT(1, KC_ENTER):
             // Immediately select the hold action when another key is pressed.
             return true;
@@ -171,7 +172,7 @@ bool is_flow_tap_key(uint16_t keycode) {
         return false; // Disable Flow Tap on hotkeys.
     }
     switch (get_tap_keycode(keycode)) {
-        //case KC_SPC:
+        case KC_SPC:
         case KC_A ... KC_E: // A, B, C, D, E
         case KC_G ... KC_I: // G, H, I
         case KC_K ... KC_L: // K, L
