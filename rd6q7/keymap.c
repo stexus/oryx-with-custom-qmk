@@ -154,16 +154,6 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo4, KC_UNDS),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(1, KC_ENTER):
-            return TAPPING_TERM -170;
-        case KC_SPACE:
-            return TAPPING_TERM -170;
-        default:
-            return TAPPING_TERM;
-    }
-}
 
 
 
