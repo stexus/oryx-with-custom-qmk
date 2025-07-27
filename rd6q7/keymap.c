@@ -140,7 +140,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   '*', '*', '*', '*'
 );
 
-const uint16_t PROGMEM combo0[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo0[] = { KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
 const uint16_t PROGMEM combo2[] = { MT(MOD_LGUI, KC_K), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_COMMA, KC_DOT, COMBO_END};
@@ -154,20 +154,10 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo4, KC_UNDS),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(1, KC_ENTER):
-            return TAPPING_TERM -170;
-        case LT(2, KC_SPACE):
-            return TAPPING_TERM -170;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// MY EDITS
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(1, KC_ENTER):
-        case LT(5, KC_BSPC):
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
@@ -175,6 +165,27 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
 }
+
+bool is_flow_tap_key(uint16_t keycode) {
+    if ((get_mods() & (MOD_MASK_CG | MOD_BIT_LALT)) != 0) {
+        return false; // Disable Flow Tap on hotkeys.
+    }
+    switch (get_tap_keycode(keycode)) {
+        //case KC_SPC:
+        case KC_A ... KC_E: // A, B, C, D, E
+        case KC_G ... KC_I: // G, H, I
+        case KC_K ... KC_L: // K, L
+        case KC_N ... KC_U: // N, O, P, Q, R, S, T, U
+        case KC_W ... KC_Z: // W, X, Y, Z
+        case KC_DOT:
+        case KC_COMM:
+        case KC_SCLN:
+        case KC_SLSH:
+            return true;
+    }
+    return false;
+}
+// END MY EDITS
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
