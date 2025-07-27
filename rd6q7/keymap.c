@@ -36,13 +36,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS,        KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT, KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,ST_MACRO_0,     
     KC_TAB,         ALL_T(KC_Q),    KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           ALL_T(KC_P),    KC_MINUS,       
     KC_ESCAPE,      MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(3, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),KC_QUOTE,       
-    KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT, 
-                                                    LT(1, KC_ENTER),OSM(MOD_LSFT),                                  LT(5, KC_BSPC), LT(2, KC_SPACE)
+    KC_LEFT_GUI,    KC_Z,           KC_X,           KC_C,           LT(7, KC_V),    KC_B,                                           KC_N,           LT(8, KC_M),    KC_COMMA,       KC_DOT,         KC_SLASH,       KC_TRANSPARENT, 
+                                                    LT(1, KC_ENTER),OSM(MOD_LSFT),                                  KC_BSPC,        LT(2, KC_SPACE)
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   LGUI(KC_C),     LGUI(KC_V),     LGUI(LSFT(KC_C)),                                KC_TRANSPARENT, KC_4,           KC_5,           KC_6,           KC_TRANSPARENT, KC_TRANSPARENT, 
-    OSM(MOD_LSFT),  LALT(KC_4),     LALT(KC_3),     LALT(KC_2),     LALT(KC_1),     LALT(KC_9),                                     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           LCTL(KC_B),     KC_TRANSPARENT, 
+    OSM(MOD_LSFT),  LALT(KC_4),     LALT(KC_3),     LALT(KC_2),     LALT(KC_1),     LALT(KC_9),                                     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           LCTL(KC_B),     CW_TOGG,        
     KC_TRANSPARENT, LALT(KC_9),     LALT(KC_8),     LALT(KC_7),     LALT(KC_A),     LALT(KC_6),                                     KC_TRANSPARENT, KC_7,           KC_8,           KC_9,           KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_0
   ),
@@ -157,9 +157,9 @@ combo_t key_combos[COMBO_COUNT] = {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(1, KC_ENTER):
-            return TAPPING_TERM -70;
+            return TAPPING_TERM -170;
         case LT(2, KC_SPACE):
-            return TAPPING_TERM -70;
+            return TAPPING_TERM -170;
         default:
             return TAPPING_TERM;
     }
