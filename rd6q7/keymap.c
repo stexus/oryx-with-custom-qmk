@@ -178,7 +178,7 @@ bool is_flow_tap_key(uint16_t keycode) {
         case KC_G ... KC_I: // G, H, I
         case KC_K ... KC_L: // K, L
         case KC_N ... KC_U: // N, O, P, Q, R, S, T, U
-        case KC_W ... KC_Z: // W, X, Y, Z
+        case KC_W ... KC_Y: // W, X, Y, Z
         case KC_DOT:
         case KC_COMM:
         case KC_SCLN:
