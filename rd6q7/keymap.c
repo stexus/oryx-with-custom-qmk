@@ -202,6 +202,29 @@ bool is_flow_tap_key(uint16_t keycode) {
     }
     return false;
 }
+// Remove flow tap on all thumb keys
+// Remove flow tap on esc/quote, hrm SHIFT
+// Decrease flow term on LCTL_T(A)
+// Increase flow on ring fingers (especially RALT_T(L))
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+        switch (keycode) {
+            case MT(MOD_LSFT, KC_F):
+            case MT(MOD_RSFT, KC_J):
+                return 0;
+            case MT(MOD_LCTL, KC_A):
+            case MT(MOD_RCTL, KC_SCLN):
+                return FLOW_TAP_TERM - 30;
+            case MT(MOD_RALT, KC_L):
+            case MT(MOD_LALT, KC_S):
+                return FLOW_TAP_TERM + 30;
+
+            default:
+                return FLOW_TAP_TERM; // Longer timeout otherwise.
+        }
+    }
+    return 0; // Disable Flow Tap.
+}
 // END MY EDITS
 
 
