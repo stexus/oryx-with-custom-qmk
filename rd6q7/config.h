@@ -12,9 +12,9 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "rd6q7/Maz9MK"
+#define SERIAL_NUMBER "rd6q7/bvJab5"
 #define LAYER_STATE_16BIT
-#define COMBO_COUNT 5
+#define COMBO_COUNT 7
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
