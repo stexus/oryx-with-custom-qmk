@@ -166,15 +166,26 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 100;
         case MT(MOD_RALT, KC_L):
             return TAPPING_TERM + 100;
+        case MT(MOD_LCTL, KC_A):
+            return 150;
         default:
             return TAPPING_TERM;
     }
 }
 // MY EDITS
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LCTL, KC_A):
+            return false;
+        default:
+            return true;
+    }
+}
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_BSPC):
         case LT(1, KC_ENTER):
+        case MT(MOD_LSFT, KC_SPACE):
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
@@ -203,18 +214,17 @@ bool is_flow_tap_key(uint16_t keycode) {
     return false;
 }
 // Remove flow tap on all thumb keys
-// Remove flow tap on esc/quote, hrm SHIFT
-// Decrease flow term on LCTL_T(A)
+// Remove flow tap  hrm SHIFT, symbol layers
 // Increase flow on ring fingers (especially RALT_T(L))
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         switch (keycode) {
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
-                return 0;
+            case LT(7, KC_V):
+            case LT(8, KC_M):
             case MT(MOD_LCTL, KC_A):
-            case MT(MOD_RCTL, KC_SCLN):
-                return FLOW_TAP_TERM - 30;
+                return 0;
             case MT(MOD_RALT, KC_L):
             case MT(MOD_LALT, KC_S):
                 return FLOW_TAP_TERM + 30;
