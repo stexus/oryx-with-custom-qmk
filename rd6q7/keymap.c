@@ -166,24 +166,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 100;
         case MT(MOD_RALT, KC_L):
             return TAPPING_TERM + 100;
-        case MT(MOD_LCTL, KC_A):
-            return 150;
         default:
             return TAPPING_TERM;
     }
 }
 // MY EDITS
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LCTL, KC_A):
-            return false;
-        default:
-            return true;
-    }
-}
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(2, KC_BSPC):
         case LT(1, KC_ENTER):
         case MT(MOD_LSFT, KC_SPACE):
             // Immediately select the hold action when another key is pressed.
@@ -224,7 +213,7 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case LT(7, KC_V):
             case LT(8, KC_M):
             case MT(MOD_LCTL, KC_A):
-                return 0;
+                return FLOW_TAP_TERM - 30;
             case MT(MOD_RALT, KC_L):
             case MT(MOD_LALT, KC_S):
                 return FLOW_TAP_TERM + 30;
