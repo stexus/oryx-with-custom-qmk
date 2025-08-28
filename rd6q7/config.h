@@ -5,14 +5,12 @@
 
 #define PERMISSIVE_HOLD
 
-#define COMBO_TERM 30
-
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 300000
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "rd6q7/3vwwbr"
+#define SERIAL_NUMBER "rd6q7/YneewZ"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 6
 
