@@ -174,33 +174,13 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(1, KC_ENTER):
-        case MT(MOD_LSFT, KC_SPACE):
+        case LT(5, KC_SPACE):
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
             // Do not select the hold action when another key is pressed.
             return false;
   }
-}
-
-bool is_flow_tap_key(uint16_t keycode) {
-    if ((get_mods() & (MOD_MASK_CG | MOD_BIT_LALT)) != 0) {
-        return false; // Disable Flow Tap on hotkeys.
-    }
-    switch (get_tap_keycode(keycode)) {
-        case KC_SPC:
-        case KC_A ... KC_E: // A, B, C, D, E
-        case KC_G ... KC_I: // G, H, I
-        case KC_K ... KC_L: // K, L
-        case KC_N ... KC_U: // N, O, P, Q, R, S, T, U
-        case KC_W ... KC_Y: // W, X, Y, Z
-        case KC_DOT:
-        case KC_COMM:
-        case KC_SCLN:
-        case KC_SLSH:
-            return true;
-    }
-    return false;
 }
 // Remove flow tap on all thumb keys
 // Remove flow tap  hrm SHIFT, symbol layers
@@ -212,11 +192,13 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case MT(MOD_RSFT, KC_J):
             case LT(7, KC_V):
             case LT(8, KC_M):
+            case LT(5, KC_SPACE):
+                return 0;
             case MT(MOD_LCTL, KC_A):
-                return FLOW_TAP_TERM - 30;
+                return FLOW_TAP_TERM - 40;
             case MT(MOD_RALT, KC_L):
             case MT(MOD_LALT, KC_S):
-                return FLOW_TAP_TERM + 30;
+                return 200;
 
             default:
                 return FLOW_TAP_TERM; // Longer timeout otherwise.
