@@ -239,12 +239,12 @@ uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
         case KC_L:
         case KC_S:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 15;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 5;
             break;
 
         case KC_A:
             if (timeout == SMTD_TIMEOUT_TAP) return 300;
-            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 10;
             break;
     }
 
