@@ -144,6 +144,14 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   '*', '*', '*', '*'
 );
 
+const uint8_t pth_side_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
+  PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, 
+  PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, 
+  PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, 
+  PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_L, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, PTH_R, 
+  PTH_S, PTH_S, PTH_S, PTH_S
+);
+
 const uint16_t PROGMEM combo0[] = { MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
 const uint16_t PROGMEM combo2[] = { MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_F), COMBO_END};
@@ -160,53 +168,53 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo5, KC_BSPC),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 100;
-        case MT(MOD_RALT, KC_L):
-            return TAPPING_TERM + 100;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case MT(MOD_LALT, KC_S):
+//             return TAPPING_TERM + 100;
+//         case MT(MOD_RALT, KC_L):
+//             return TAPPING_TERM + 100;
+//         default:
+//             return TAPPING_TERM;
+//     }
+// }
 // MY EDITS
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(1, KC_ENTER):
-        case LT(5, KC_SPACE):
-            // Immediately select the hold action when another key is pressed.
-            return true;
-        default:
-            // Do not select the hold action when another key is pressed.
-            return false;
-  }
-}
+// bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case LT(1, KC_ENTER):
+//         case LT(5, KC_SPACE):
+//             // Immediately select the hold action when another key is pressed.
+//             return true;
+//         default:
+//             // Do not select the hold action when another key is pressed.
+//             return false;
+//   }
+// }
 // Remove flow tap on all thumb keys
 // Remove flow tap  hrm SHIFT, symbol layers
 // Increase flow on ring fingers (especially RALT_T(L))
-uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
-    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
-        switch (keycode) {
-            case MT(MOD_LSFT, KC_F):
-            case MT(MOD_RSFT, KC_J):
-            case LT(7, KC_V):
-            case LT(8, KC_M):
-            case LT(5, KC_SPACE):
-            case MT(MOD_LCTL, KC_Z):
-                return 0;
-            case MT(MOD_LCTL, KC_A):
-                return FLOW_TAP_TERM - 40;
-            case MT(MOD_RALT, KC_L):
-            case MT(MOD_LALT, KC_S):
-                return 200;
-
-            default:
-                return FLOW_TAP_TERM; // Longer timeout otherwise.
-        }
-    }
-    return 0; // Disable Flow Tap.
-}
+// uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+//     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+//         switch (keycode) {
+//             case MT(MOD_LSFT, KC_F):
+//             case MT(MOD_RSFT, KC_J):
+//             case LT(7, KC_V):
+//             case LT(8, KC_M):
+//             case LT(5, KC_SPACE):
+//             case MT(MOD_LCTL, KC_Z):
+//                 return 0;
+//             case MT(MOD_LCTL, KC_A):
+//                 return FLOW_TAP_TERM - 40;
+//             case MT(MOD_RALT, KC_L):
+//             case MT(MOD_LALT, KC_S):
+//                 return 200;
+//
+//             default:
+//                 return FLOW_TAP_TERM; // Longer timeout otherwise.
+//         }
+//     }
+//     return 0; // Disable Flow Tap.
+// }
 // END MY EDITS
 
 
