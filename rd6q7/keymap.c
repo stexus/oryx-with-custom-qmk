@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "sm_td.h"
 #include "version.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #ifndef ZSA_SAFE_RANGE
@@ -38,11 +39,11 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    KC_CAPS,        KC_LEFT,        KC_RIGHT,       KC_I,           KC_O,           KC_LEFT_CTRL,                                   KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_MEDIA_PLAY_PAUSE,KC_AUDIO_MUTE,  KC_TRANSPARENT, DF(1), 
-    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPC,        
-    KC_ESCAPE,      MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(4, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),KC_QUOTE,       
-    CW_TOGG,        MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           LT(7, KC_V),    KC_B,                                           KC_N,           LT(8, KC_M),    KC_COMMA,       KC_DOT,         KC_SLASH,       KC_CAPS,        
-                                                    LT(2, KC_ENTER),KC_MINUS,                                       MO(3),          KC_SPACE
+    KC_CAPS,        KC_LEFT,        KC_RIGHT,       KC_I,           KC_O,           KC_LEFT_CTRL,                                   KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_MEDIA_PLAY_PAUSE,KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,
+    KC_TAB,         KC_Q,    KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,    KC_BSPC,        
+    KC_ESCAPE,      KC_A,KC_S,KC_D,KC_F,KC_G,                                    KC_H,           KC_J,KC_K,KC_L,KC_SCLN,KC_QUOTE,       
+    KC_LEFT_SHIFT,  KC_Z,KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
+                                                    LT(1, KC_ENTER),CW_TOGG,                                MO(2),          KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DF(0), 
@@ -159,69 +160,71 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo4, KC_UNDS),
 };
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LALT, KC_S):
-            return TAPPING_TERM + 100;
-        case MT(MOD_RALT, KC_L):
-            return TAPPING_TERM + 100;
-        case MT(MOD_LSFT, KC_F):
-        case MT(MOD_RSFT, KC_J):
-        case LT(7, KC_V):
-        case LT(8, KC_M):
-            return 150;
-        default:
-            return TAPPING_TERM;
-    }
-}
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case MT(MOD_LALT, KC_S):
+//             return TAPPING_TERM + 100;
+//         case MT(MOD_RALT, KC_L):
+//             return TAPPING_TERM + 100;
+//         default:
+//             return TAPPING_TERM;
+//     }
+// }
 // MY EDITS
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(2, KC_ENTER):
-        case LT(5, KC_SPACE):
-            // Immediately select the hold action when another key is pressed.
-            return true;
-        default:
-            // Do not select the hold action when another key is pressed.
-            return false;
-  }
-}
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case MT(MOD_LSFT, KC_F):
-        case MT(MOD_RSFT, KC_J):
-        case LT(7, KC_V):
-        case LT(8, KC_M):
-            return false;
-        default:
-            return true;
-    }
-}
+// bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case LT(1, KC_ENTER):
+//         case LT(5, KC_SPACE):
+//             // Immediately select the hold action when another key is pressed.
+//             return true;
+//         default:
+//             // Do not select the hold action when another key is pressed.
+//             return false;
+//   }
+// }
 // Remove flow tap on all thumb keys
 // Remove flow tap  hrm SHIFT, symbol layers
 // Increase flow on ring fingers (especially RALT_T(L))
-uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
-    if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
-        switch (keycode) {
-            case MT(MOD_LSFT, KC_F):
-            case MT(MOD_RSFT, KC_J):
-            case LT(7, KC_V):
-            case LT(8, KC_M):
-            case LT(5, KC_SPACE):
-            case MT(MOD_LCTL, KC_Z):
-                return 0;
-            case MT(MOD_LCTL, KC_A):
-            case MT(MOD_RCTL, KC_SCLN):
-                return FLOW_TAP_TERM - 40;
-            case MT(MOD_RALT, KC_L):
-            case MT(MOD_LALT, KC_S):
-                return 200;
-
-            default:
-                return FLOW_TAP_TERM; // Longer timeout otherwise.
-        }
+// uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
+//     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
+//         switch (keycode) {
+//             case MT(MOD_LSFT, KC_F):
+//             case MT(MOD_RSFT, KC_J):
+//             case LT(7, KC_V):
+//             case LT(8, KC_M):
+//             case LT(5, KC_SPACE):
+//             case MT(MOD_LCTL, KC_Z):
+//                 return 0;
+//             case MT(MOD_LCTL, KC_A):
+//                 return FLOW_TAP_TERM - 40;
+//             case MT(MOD_RALT, KC_L):
+//             case MT(MOD_LALT, KC_S):
+//                 return 200;
+//
+//             default:
+//                 return FLOW_TAP_TERM; // Longer timeout otherwise.
+//         }
+//     }
+//     return 0; // Disable Flow Tap.
+// }
+smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+    switch (keycode) {
+        SMTD_MT(KC_A, KC_LEFT_CTRL, 2)
+        SMTD_MT(KC_S, KC_LEFT_ALT, 2)
+        SMTD_MT(KC_D, KC_LEFT_GUI, 2)
+        SMTD_MT(KC_F, KC_LSFT, 2)
+        SMTD_LT(KC_V, 7, 2)
+        SMTD_LT(KC_C, 6, 2)
+        SMTD_LT(KC_G, 3, 2)
+        //SMTD_MT(KC_H, KC_RIGHT_GUI, 2)
+        SMTD_MT(KC_J, KC_RSFT, 1)
+        SMTD_MT(KC_K, KC_RIGHT_GUI, 1)
+        SMTD_MT(KC_L, KC_RIGHT_ALT, 2)
+        SMTD_MT(KC_SCLN, KC_RIGHT_CTRL, 2)
+        SMTD_LT(KC_M, 8, 2)
     }
-    return 0; // Disable Flow Tap.
+
+    return SMTD_RESOLUTION_UNHANDLED;
 }
 // END MY EDITS
 
