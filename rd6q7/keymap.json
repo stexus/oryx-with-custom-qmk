@@ -1,7 +1,6 @@
 {
   "modules": [
     "zsa/oryx",
-    "zsa/defaults",
-    "stasmarkin/sm_td"
+    "zsa/defaults"
   ]
 }

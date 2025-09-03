@@ -1,5 +1,5 @@
 // #define FLOW_TAP_TERM 80
-//#define CHORDAL_HOLD
+// #define CHORDAL_HOLD
 // #undef TAPPING_TERM
 // #define TAPPING_TERM 300
 // #define QUICK_TAP_TERM 120
@@ -25,5 +25,6 @@
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 5
 
-//#define TAPPING_TERM_PER_KEY
+// #define TAPPING_TERM_PER_KEY
 #define RGB_MATRIX_STARTUP_SPD 60
+#define MAX_DEFERRED_EXECUTORS 10
