@@ -1,6 +1,6 @@
 [submodule "qmk_firmware"]
 	path = qmk_firmware
 	url = https://github.com/zsa/qmk_firmware.git
-[submodule "modules/jgandert"]
-	path = modules/jgandert
+[submodule "jgandert"]
+	path = jgandert
 	url = https://github.com/jgandert/qmk_modules.git
