@@ -214,12 +214,12 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
         SMTD_MT(KC_D, KC_LEFT_GUI, 2)
         SMTD_MT(KC_F, KC_LSFT, 2)
         SMTD_LT(KC_V, 7, 2)
-        SMTD_LT(KC_C, 6, 2)
+        SMTD_LT(KC_Z, 6, 2)
         SMTD_LT(KC_G, 3, 2)
         //SMTD_MT(KC_H, KC_RIGHT_GUI, 2)
         SMTD_MT(KC_J, KC_RSFT, 1)
         SMTD_MT(KC_K, KC_RIGHT_GUI, 1)
-        SMTD_MT(KC_L, KC_RIGHT_ALT, 2)
+        SMTD_MT(KC_L, KC_RIGHT_ALT, 1)
         SMTD_MT(KC_SCLN, KC_RIGHT_CTRL, 2)
         SMTD_LT(KC_M, 8, 2)
 
@@ -227,6 +227,28 @@ smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap
     }
 
     return SMTD_RESOLUTION_UNHANDLED;
+}
+uint32_t get_smtd_timeout(uint16_t keycode, smtd_timeout timeout) {
+    switch (keycode) {
+        case KC_F:
+        case KC_J:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 30;
+            break;
+
+        case KC_L:
+        case KC_S:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 15;
+            break;
+
+        case KC_A:
+            if (timeout == SMTD_TIMEOUT_TAP) return 300;
+            if (timeout == SMTD_TIMEOUT_RELEASE) return 20;
+            break;
+    }
+
+    return get_smtd_timeout_default(timeout);
 }
 // END MY EDITS
 
