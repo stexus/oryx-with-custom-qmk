@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_CAPS,        KC_LEFT,        KC_RIGHT,       KC_I,           KC_O,           KC_LEFT_CTRL,                                   KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_MEDIA_PLAY_PAUSE,KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,
     KC_TAB,         ALL_T(KC_Q),    KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           ALL_T(KC_P),    KC_BSPC,        
     KC_ESCAPE,      MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(3, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),KC_QUOTE,       
-    KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
-                                                    LT(1, KC_ENTER),LT(5, KC_SPACE),                                MO(2),          KC_SPACE
+    KC_LEFT_SHIFT,  MT(MOD_LCTL,KC_Z),KC_X,           KC_C,           LT(7, KC_V),           KC_B,                                           KC_N,           LT(8, KC_M),           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
+                                                    LT(1, KC_ENTER),CW_TOGG,                                MO(2),          KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
@@ -149,7 +149,8 @@ const uint16_t PROGMEM combo1[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMB
 const uint16_t PROGMEM combo2[] = { MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_F), COMBO_END};
 const uint16_t PROGMEM combo3[] = { MT(MOD_RSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
 const uint16_t PROGMEM combo4[] = { MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo5[] = { ALL_T(KC_Q), KC_TAB, COMBO_END};
+const uint16_t PROGMEM combo5[] = { KC_C, LT(7, KC_V), COMBO_END};
+const uint16_t PROGMEM combo6[] = { KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_19),
@@ -158,6 +159,7 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo3, KC_LPRN),
     COMBO(combo4, CW_TOGG),
     COMBO(combo5, KC_BSPC),
+    COMBO(combo6, KC_SPACE),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -166,6 +168,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM + 100;
         case MT(MOD_RALT, KC_L):
             return TAPPING_TERM + 100;
+        case MT(MOD_LCTL, KC_A):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case LT(7, KC_V):
+        case LT(8, KC_M):
+            return 150;
         default:
             return TAPPING_TERM;
     }
@@ -182,6 +190,18 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
             return false;
   }
 }
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case MT(MOD_LCTL, KC_A):
+        case MT(MOD_LSFT, KC_F):
+        case MT(MOD_RSFT, KC_J):
+        case LT(7, KC_V):
+        case LT(8, KC_M):
+            return false;
+        default:
+            return true;
+    }
+}
 // Remove flow tap on all thumb keys
 // Remove flow tap  hrm SHIFT, symbol layers
 // Increase flow on ring fingers (especially RALT_T(L))
@@ -195,8 +215,8 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case LT(5, KC_SPACE):
             case MT(MOD_LCTL, KC_Z):
                 return 0;
-            case MT(MOD_LCTL, KC_A):
-                return FLOW_TAP_TERM - 40;
+            // case MT(MOD_LCTL, KC_A):
+            //     return FLOW_TAP_TERM - 40;
             case MT(MOD_RALT, KC_L):
             case MT(MOD_LALT, KC_S):
                 return 200;
