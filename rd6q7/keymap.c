@@ -172,7 +172,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_RSFT, KC_J):
         case LT(7, KC_V):
         case LT(8, KC_M):
-            return 150;
+            return 130;
         case MT(MOD_LCTL, KC_A):
             return 180;
         default:
