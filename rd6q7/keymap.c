@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [8] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_GRAVE,       KC_LABK,        KC_RABK,        KC_MINUS,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_GRAVE,       KC_LABK,        KC_RABK,        KC_MINUS,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TILD,        KC_EXLM,        KC_PLUS,        KC_AMPR,        KC_EQUAL,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_UNDS,        KC_ASTR,        KC_PIPE,        KC_BSLS,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
@@ -146,20 +146,16 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
 
 const uint16_t PROGMEM combo0[] = { MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo2[] = { MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo3[] = { MT(MOD_RSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
-const uint16_t PROGMEM combo4[] = { MT(MOD_LALT, KC_S), MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_C, LT(7, KC_V), COMBO_END};
-const uint16_t PROGMEM combo6[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo2[] = { ALL_T(KC_Q), KC_TAB, COMBO_END};
+const uint16_t PROGMEM combo3[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo4[] = { MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_F), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_19),
     COMBO(combo1, KC_EQUAL),
-    COMBO(combo2, KC_UNDS),
-    COMBO(combo3, KC_LPRN),
-    COMBO(combo4, CW_TOGG),
-    COMBO(combo5, KC_BSPC),
-    COMBO(combo6, KC_SPACE),
+    COMBO(combo2, KC_BSPC),
+    COMBO(combo3, KC_SPACE),
+    COMBO(combo4, KC_UNDS),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
