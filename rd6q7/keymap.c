@@ -179,7 +179,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // MY EDITS
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(1, KC_ENTER):
+        case LT(2, KC_ENTER):
         case LT(5, KC_SPACE):
             // Immediately select the hold action when another key is pressed.
             return true;
