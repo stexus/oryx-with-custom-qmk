@@ -213,7 +213,7 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
                 return FLOW_TAP_TERM - 40;
             case MT(MOD_RALT, KC_L):
             case MT(MOD_LALT, KC_S):
-                return 200;
+                return 150;
 
             default:
                 return FLOW_TAP_TERM; // Longer timeout otherwise.
