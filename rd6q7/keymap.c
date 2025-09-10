@@ -207,8 +207,8 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
         switch (keycode) {
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
-            case LT(7, KC_V):
-            case LT(8, KC_M):
+            case LT(7, KC_Z):
+            case LT(8, KC_SLASH):
             case LT(5, KC_SPACE):
             case MT(MOD_LCTL, KC_Z):
                 return 0;
