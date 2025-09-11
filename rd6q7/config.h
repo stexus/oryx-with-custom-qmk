@@ -3,7 +3,7 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 300
 
-#define COMBO_TERM 20
+#define COMBO_TERM 25
 
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 300000
@@ -16,7 +16,7 @@
 #define MOUSEKEY_MAX_SPEED 3
 
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "rd6q7/RjWNwb"
+#define SERIAL_NUMBER "rd6q7/jZ6pje"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 6
 
