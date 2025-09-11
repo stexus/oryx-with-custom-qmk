@@ -162,13 +162,12 @@ combo_t key_combos[COMBO_COUNT] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(7, KC_S):
-            return TAPPING_TERM + 100;
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
-        case LT(7, KC_V):
-        case LT(8, KC_M):
             return 150;
+        case LT(7, KC_S):
+        case LT(8, KC_L):
+            return 200;
         default:
             return TAPPING_TERM;
     }
@@ -189,8 +188,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
-        case LT(7, KC_V):
-        case LT(8, KC_M):
+        case LT(7, KC_S):
+        case LT(8, KC_L):
             return false;
         default:
             return true;
@@ -204,17 +203,13 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
         switch (keycode) {
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
-            case LT(7, KC_Z):
-            case LT(8, KC_SLASH):
-            case LT(5, KC_SPACE):
+            case LT(7, KC_S):
+            case LT(8, KC_L):
             case MT(MOD_LCTL, KC_Z):
                 return 0;
             case MT(MOD_LCTL, KC_A):
             case MT(MOD_RCTL, KC_SCLN):
                 return FLOW_TAP_TERM - 40;
-            case MT(MOD_RALT, KC_L):
-            case MT(MOD_LALT, KC_S):
-                return 150;
 
             default:
                 return FLOW_TAP_TERM; // Longer timeout otherwise.
