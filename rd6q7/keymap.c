@@ -144,11 +144,11 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   '*', '*', '*', '*'
 );
 
-const uint16_t PROGMEM combo0[] = { KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM combo0[] = { MT(MOD_LSFT, KC_F), MT(MOD_LCTL, KC_A), COMBO_END};
 const uint16_t PROGMEM combo1[] = { MT(MOD_LSFT, KC_F), KC_M, COMBO_END};
 const uint16_t PROGMEM combo2[] = { KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo3[] = { MT(MOD_LGUI, KC_D), MT(MOD_LALT, KC_S), COMBO_END};
-const uint16_t PROGMEM combo4[] = { MT(MOD_LSFT, KC_F), MT(MOD_LALT, KC_S), COMBO_END};
+const uint16_t PROGMEM combo4[] = { KC_X, KC_V, COMBO_END};
 const uint16_t PROGMEM combo5[] = { KC_9, KC_7, COMBO_END};
 const uint16_t PROGMEM combo6[] = { KC_W, KC_R, COMBO_END};
 const uint16_t PROGMEM combo7[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
