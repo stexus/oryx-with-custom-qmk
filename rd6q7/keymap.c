@@ -179,7 +179,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
-        case LT(5, KC_SPACE):
+        case MT(MOD_LSFT, KC_ESCAPE):
+        case LT(7, KC_EQUAL):
+        case MT(MOD_RSFT, KC_QUOTE):
+        case DUAL_FUNC_0:
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
@@ -209,6 +212,10 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case LT(7, KC_S):
             case LT(8, KC_L):
             case MT(MOD_LCTL, KC_Z):
+            case MT(MOD_LSFT, KC_ESCAPE):
+            case LT(7, KC_EQUAL):
+            case MT(MOD_RSFT, KC_QUOTE):
+            case DUAL_FUNC_0:
                 return 0;
             case MT(MOD_LCTL, KC_A):
             case MT(MOD_RCTL, KC_SCLN):
