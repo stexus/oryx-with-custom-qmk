@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
-  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  '*', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   '*', '*', '*', '*'
 );
@@ -182,6 +182,13 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LSFT, KC_ESCAPE):
         case LT(7, KC_EQUAL):
         case MT(MOD_RSFT, KC_QUOTE):
+            if (record->event.pressed) {
+                uint16_t last_key = record->event.keycode;
+                if (last_key == LT(7, KC_S) || last_key == LGUI_T(KC_D) || last_key == KC_V) {
+                    return false;  // tap instead of hold
+                }
+            }
+            return true; // default: hold on other key press
         case DUAL_FUNC_0:
             // Immediately select the hold action when another key is pressed.
             return true;
