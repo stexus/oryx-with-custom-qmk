@@ -16,9 +16,9 @@
 #define MOUSEKEY_MAX_SPEED 3
 
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "rd6q7/v6mLlb"
+#define SERIAL_NUMBER "rd6q7/eadyKl"
 #define LAYER_STATE_16BIT
-#define COMBO_COUNT 6
+#define COMBO_COUNT 7
 
 #define TAPPING_TERM_PER_KEY
 #define RGB_MATRIX_STARTUP_SPD 60
