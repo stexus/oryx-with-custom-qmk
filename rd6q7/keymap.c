@@ -181,14 +181,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case LT(2, KC_ENTER):
         case MT(MOD_LSFT, KC_ESCAPE):
         case LT(7, KC_EQUAL):
-        case MT(MOD_RSFT, KC_QUOTE):
-            if (record->event.pressed) {
-                uint16_t last_key = record->event.keycode;
-                if (last_key == LT(7, KC_S) || last_key == LGUI_T(KC_D) || last_key == KC_V) {
-                    return false;  // tap instead of hold
-                }
-            }
-            return true; // default: hold on other key press
         case DUAL_FUNC_0:
             // Immediately select the hold action when another key is pressed.
             return true;
@@ -221,7 +213,6 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case MT(MOD_LCTL, KC_Z):
             case MT(MOD_LSFT, KC_ESCAPE):
             case LT(7, KC_EQUAL):
-            case MT(MOD_RSFT, KC_QUOTE):
             case DUAL_FUNC_0:
                 return 0;
             case MT(MOD_LCTL, KC_A):
