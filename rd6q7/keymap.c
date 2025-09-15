@@ -34,21 +34,20 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(2, KC_A)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_CAPS,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DF(1), 
-    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPC,        
-    LT(7, KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(4, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),LT(8, KC_QUOTE),
-    DUAL_FUNC_0,    MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       MT(MOD_RSFT, KC_EQUAL),
+    LT(7, KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           LT(8, KC_BSPC), 
+    MT(MOD_LSFT, KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(4, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),MT(MOD_RSFT, KC_QUOTE),
+    KC_UNDS,        MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_EQUAL,       
                                                     LT(2, KC_ENTER),KC_MINUS,                                       MO(3),          KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DF(0), 
-    KC_TAB,         KC_B,           KC_F,           KC_L,           KC_D,           KC_Q,                                           KC_P,           KC_G,           KC_O,           KC_U,           KC_DOT,         KC_BSPC,        
-    LT(7, KC_ESCAPE),MT(MOD_LCTL, KC_N),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_T),LT(4, KC_M),                                    KC_Y,           MT(MOD_RSFT, KC_C),MT(MOD_RGUI, KC_A),MT(MOD_RALT, KC_E),MT(MOD_RCTL, KC_I),LT(8, KC_MINUS),
-    DUAL_FUNC_0,    MT(MOD_LCTL, KC_X),KC_V,           KC_J,           KC_K,           KC_Z,                                           KC_QUOTE,       KC_W,           KC_SLASH,       KC_SCLN,        KC_COMMA,       MT(MOD_RSFT, KC_EQUAL),
+    KC_TRANSPARENT, KC_B,           KC_F,           KC_L,           KC_D,           KC_Q,                                           KC_P,           KC_G,           KC_O,           KC_U,           KC_DOT,         KC_TRANSPARENT, 
+    KC_TRANSPARENT, MT(MOD_LCTL, KC_N),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_T),LT(4, KC_M),                                    KC_Y,           MT(MOD_RSFT, KC_C),MT(MOD_RGUI, KC_A),MT(MOD_RALT, KC_E),MT(MOD_RCTL, KC_I),MT(MOD_RSFT, KC_MINUS),
+    KC_UNDS,        MT(MOD_LCTL, KC_X),KC_V,           KC_J,           KC_K,           KC_Z,                                           KC_QUOTE,       KC_W,           KC_SLASH,       KC_SCLN,        KC_COMMA,       KC_EQUAL,       
                                                     KC_R,           LT(2, KC_ENTER),                                MO(3),          KC_SPACE
   ),
   [2] = LAYOUT_voyager(
@@ -377,21 +376,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-    case DUAL_FUNC_0:
-      if (record->tap.count > 0) {
-        if (record->event.pressed) {
-          register_code16(KC_UNDS);
-        } else {
-          unregister_code16(KC_UNDS);
-        }
-      } else {
-        if (record->event.pressed) {
-          register_code16(KC_LEFT_SHIFT);
-        } else {
-          unregister_code16(KC_LEFT_SHIFT);
-        }  
-      }  
-      return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
