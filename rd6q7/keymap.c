@@ -38,16 +38,16 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_CAPS,        KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DF(1), 
-    KC_TAB,         KC_Q,           MT(MOD_LALT, KC_W),KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           MT(MOD_RALT, KC_O),KC_P,           KC_BSPC,        
-    LT(7, KC_ESCAPE),MT(MOD_LCTL, KC_A),LT(7, KC_S),    MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(4, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),LT(8, KC_L),    MT(MOD_RCTL, KC_SCLN),LT(8, KC_QUOTE),
-    KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
+    LT(7, KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           LT(8, KC_BSPC), 
+    MT(MOD_LSFT, KC_ESCAPE),MT(MOD_LCTL, KC_A),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),LT(4, KC_G),                                    KC_H,           MT(MOD_RSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_RALT, KC_L),MT(MOD_RCTL, KC_SCLN),MT(MOD_RSFT, KC_QUOTE),
+    KC_UNDS,        MT(MOD_LCTL, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_EQUAL,       
                                                     LT(2, KC_ENTER),KC_MINUS,                                       MO(3),          KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                                           KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           DF(0), 
-    KC_TAB,         KC_B,           KC_F,           KC_L,           KC_D,           KC_Q,                                           KC_P,           KC_G,           KC_O,           KC_U,           KC_DOT,         KC_BSPC,        
-    LT(7, KC_ESCAPE),MT(MOD_LCTL, KC_N),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_T),LT(4, KC_M),                                    KC_Y,           MT(MOD_RSFT, KC_C),MT(MOD_RGUI, KC_A),MT(MOD_RALT, KC_E),MT(MOD_RCTL, KC_I),LT(8, KC_MINUS),
-    KC_LEFT_SHIFT,  MT(MOD_LCTL, KC_X),KC_V,           KC_J,           LT(7, KC_K),    KC_Z,                                           KC_QUOTE,       LT(8, KC_W),    KC_SLASH,       KC_SCLN,        KC_COMMA,       KC_RIGHT_SHIFT, 
+    LT(7, KC_TAB),  KC_B,           KC_F,           KC_L,           KC_D,           KC_Q,                                           KC_P,           KC_G,           KC_O,           KC_U,           KC_DOT,         LT(8, KC_BSPC), 
+    MT(MOD_LSFT, KC_ESCAPE),MT(MOD_LCTL, KC_N),MT(MOD_LALT, KC_S),MT(MOD_LGUI, KC_H),MT(MOD_LSFT, KC_T),LT(4, KC_M),                                    KC_Y,           MT(MOD_RSFT, KC_C),MT(MOD_RGUI, KC_A),MT(MOD_RALT, KC_E),MT(MOD_RCTL, KC_I),MT(MOD_RSFT, KC_MINUS),
+    CW_TOGG,        MT(MOD_LCTL, KC_X),KC_V,           KC_J,           KC_K,           KC_Z,                                           KC_QUOTE,       KC_W,           KC_SLASH,       KC_SCLN,        KC_COMMA,       KC_EQUAL,       
                                                     KC_R,           LT(2, KC_ENTER),                                MO(3),          KC_SPACE
   ),
   [2] = LAYOUT_voyager(
@@ -144,16 +144,20 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   '*', '*', '*', '*'
 );
 
-const uint16_t PROGMEM combo0[] = { LT(7, KC_S), MT(MOD_LGUI, KC_D), COMBO_END};
-const uint16_t PROGMEM combo1[] = { KC_Q, MT(MOD_LALT, KC_W), COMBO_END};
-const uint16_t PROGMEM combo2[] = { LT(7, KC_S), MT(MOD_LSFT, KC_F), COMBO_END};
+const uint16_t PROGMEM combo0[] = { MT(MOD_LGUI, KC_D), MT(MOD_LALT, KC_S), COMBO_END};
+const uint16_t PROGMEM combo1[] = { KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM combo2[] = { MT(MOD_LSFT, KC_F), MT(MOD_LALT, KC_S), COMBO_END};
 const uint16_t PROGMEM combo3[] = { KC_9, KC_7, COMBO_END};
-const uint16_t PROGMEM combo4[] = { KC_TAB, KC_Q, COMBO_END};
-const uint16_t PROGMEM combo5[] = { KC_P, KC_BSPC, COMBO_END};
-const uint16_t PROGMEM combo6[] = { MT(MOD_LGUI, KC_K), LT(8, KC_L), COMBO_END};
-const uint16_t PROGMEM combo7[] = { MT(MOD_RSFT, KC_J), LT(8, KC_L), COMBO_END};
-const uint16_t PROGMEM combo8[] = { MT(MOD_LGUI, KC_D), MT(MOD_LSFT, KC_F), COMBO_END};
-const uint16_t PROGMEM combo9[] = { MT(MOD_RSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
+const uint16_t PROGMEM combo4[] = { KC_Q, LT(7, KC_TAB), COMBO_END};
+const uint16_t PROGMEM combo5[] = { KC_COMMA, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo6[] = { MT(MOD_LGUI, KC_K), MT(MOD_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM combo7[] = { MT(MOD_RSFT, KC_J), MT(MOD_RALT, KC_L), COMBO_END};
+const uint16_t PROGMEM combo8[] = { MT(MOD_RSFT, KC_J), MT(MOD_LGUI, KC_K), COMBO_END};
+const uint16_t PROGMEM combo9[] = { KC_U, MT(MOD_RSFT, KC_J), COMBO_END};
+const uint16_t PROGMEM combo10[] = { KC_I, MT(MOD_LGUI, KC_K), COMBO_END};
+const uint16_t PROGMEM combo11[] = { KC_Y, KC_H, COMBO_END};
+const uint16_t PROGMEM combo12[] = { KC_E, MT(MOD_LGUI, KC_D), COMBO_END};
+const uint16_t PROGMEM combo13[] = { KC_R, MT(MOD_LSFT, KC_F), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_19),
@@ -164,8 +168,12 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo5, RALT(KC_BSPC)),
     COMBO(combo6, CW_TOGG),
     COMBO(combo7, KC_CAPS),
-    COMBO(combo8, KC_LEFT_SHIFT),
-    COMBO(combo9, KC_RIGHT_SHIFT),
+    COMBO(combo8, KC_ESCAPE),
+    COMBO(combo9, KC_LPRN),
+    COMBO(combo10, KC_LCBR),
+    COMBO(combo11, KC_CIRC),
+    COMBO(combo12, KC_AMPR),
+    COMBO(combo13, KC_EQUAL),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -174,9 +182,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_RSFT, KC_J):
             return 150;
         case MT(MOD_LCTL, KC_A):
-        case LT(7, KC_S):
-        case LT(8, KC_L):
             return 200;
+        case MT(MOD_LALT, KC_S):
+            return TAPPING_TERM + 100;
+        case MT(MOD_RALT, KC_L):
+            return TAPPING_TERM + 100;
         default:
             return TAPPING_TERM;
     }
