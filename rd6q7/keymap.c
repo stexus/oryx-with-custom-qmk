@@ -227,7 +227,6 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
             case LT(7, KC_TAB):
             case LT(8, KC_BSPC):
             case MT(MOD_LSFT, KC_ESCAPE):
-            case MT(MOD_RSFT, KC_SLASH):
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
             case LT(7, KC_S):
@@ -241,6 +240,7 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
                 return FLOW_TAP_TERM/2;
             case MT(MOD_LALT, KC_W):
             case MT(MOD_RALT, KC_O):
+            case MT(MOD_RSFT, KC_QUOT):
                 return FLOW_TAP_TERM*2;
 
             default:
