@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
-  '*', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   '*', '*', '*', '*'
 );
@@ -185,8 +185,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
-        case MT(MOD_LSFT, KC_ESCAPE):
-        case MT(MOD_RSFT, KC_SLASH):
+        case LT(7, KC_ESCAPE):
         case LT(7, KC_EQUAL):
         case LT(8, KC_UNDS):
             // Immediately select the hold action when another key is pressed.
@@ -214,7 +213,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         switch (keycode) {
-            case MT(MOD_LSFT, KC_ESCAPE):
+            case LT(7, KC_ESCAPE):
             case MT(MOD_RSFT, KC_SLASH):
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
