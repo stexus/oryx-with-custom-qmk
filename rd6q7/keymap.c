@@ -141,7 +141,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT(
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
   'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
-  'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', 'R', 
+  '*', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R', 'R', '*', 
   '*', '*', '*', '*'
 );
 
@@ -198,10 +198,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
-        case LT(7, KC_TAB):
-        case LT(8, KC_BSPC):
-        case MT(MOD_LSFT, KC_ESCAPE):
-        case MT(MOD_RSFT, KC_QUOT):
+        case LT(7, KC_ESCAPE):
+        case LT(8, KC_QUOT):
+        case DUAL_FUNC_0:
+        case MT(MOD_RSFT, KC_EQUAL):
             // Immediately select the hold action when another key is pressed.
             return true;
         default:
@@ -225,24 +225,21 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_keycode) {
     if (is_flow_tap_key(keycode) && is_flow_tap_key(prev_keycode)) {
         switch (keycode) {
-            case LT(7, KC_TAB):
-            case LT(8, KC_BSPC):
-            case MT(MOD_LSFT, KC_ESCAPE):
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
-            case LT(7, KC_S):
-            case LT(8, KC_L):
             case MT(MOD_LCTL, KC_Z):
-            case LT(7, KC_EQUAL):
-            case LT(8, KC_UNDS):
+            case LT(7, KC_ESCAPE):
+            case DUAL_FUNC_0:
+            case MT(MOD_RSFT, KC_EQUAL):
                 return 0;
             case MT(MOD_LCTL, KC_A):
             case MT(MOD_RCTL, KC_SCLN):
                 return FLOW_TAP_TERM/2;
             case MT(MOD_LALT, KC_W):
             case MT(MOD_RALT, KC_O):
-            case MT(MOD_RSFT, KC_QUOT):
                 return FLOW_TAP_TERM*2;
+            case LT(8, KC_QUOT):
+                return 200;
 
             default:
                 return FLOW_TAP_TERM; // Longer timeout otherwise.
