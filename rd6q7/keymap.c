@@ -182,9 +182,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_RSFT, KC_J):
             return 150;
         case MT(MOD_LCTL, KC_A):
-            return 200;
         case LT(7, KC_S):
         case LT(8, KC_L):
+            return 200;
         case MT(MOD_RALT, KC_X):
         case MT(MOD_LALT, KC_DOT):
             return TAPPING_TERM + 100;
@@ -210,6 +210,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LCTL, KC_A):
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
+        case LT(7, KC_S):
+        case LT(8, KC_L):
             return false;
         default:
             return true;
