@@ -170,13 +170,13 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo5, RALT(KC_BSPC)),
     COMBO(combo6, CW_TOGG),
     COMBO(combo7, KC_CAPS),
-    COMBO(combo8, KC_RIGHT_SHIFT),
+    COMBO(combo8, OSM(MOD_RSFT)),
     COMBO(combo9, KC_LPRN),
     COMBO(combo10, KC_LCBR),
     COMBO(combo11, KC_CIRC),
     COMBO(combo12, KC_AMPR),
     COMBO(combo13, KC_EQUAL),
-    COMBO(combo14, KC_LEFT_SHIFT),
+    COMBO(combo14, OSM(MOD_LSFT)),
 };
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
