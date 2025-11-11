@@ -189,7 +189,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
         case LT(7, KC_ESCAPE):
-        case lt(3, KC_BSPC):
+        case LT(3, KC_BSPC):
         case MT(MOD_RSFT, KC_EQUAL):
             // Immediately select the hold action when another key is pressed.
             return true;
