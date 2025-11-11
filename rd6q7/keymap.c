@@ -184,7 +184,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
             return 150;
-        case MT(MOD_LCTL, KC_A):
+        //case MT(MOD_LCTL, KC_A):
         case LT(7, KC_S):
         case LT(8, KC_L):
             return 200;
@@ -200,7 +200,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
         case LT(7, KC_ESCAPE):
-        case LT(3, KC_BSPC):
+        case lt(3, KC_BSPC):
         case MT(MOD_RSFT, KC_EQUAL):
             // Immediately select the hold action when another key is pressed.
             return true;
@@ -211,11 +211,11 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 }
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LCTL, KC_A):
+        //case MT(MOD_LCTL, KC_A):
         case MT(MOD_LSFT, KC_F):
         case MT(MOD_RSFT, KC_J):
-        case LT(7, KC_S):
-        case LT(8, KC_L):
+        // case LT(7, KC_S):
+        // case LT(8, KC_L):
             return false;
         default:
             return true;
@@ -229,18 +229,14 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record, uint16_t prev_
         switch (keycode) {
             case MT(MOD_LSFT, KC_F):
             case MT(MOD_RSFT, KC_J):
-            case MT(MOD_LCTL, KC_Z):
-            case LT(7, KC_ESCAPE):
-            case LT(7, KC_S):
-            case LT(8, KC_L):
-            case MT(MOD_RSFT, KC_EQUAL):
+            // case LT(7, KC_S):
+            // case LT(8, KC_L):
                 return 0;
             case MT(MOD_LCTL, KC_A):
             case MT(MOD_RCTL, KC_SCLN):
                 return FLOW_TAP_TERM/2;
-            case MT(MOD_LALT, KC_X):
-            case MT(MOD_RALT, KC_DOT):
-            case LT(8, KC_QUOT):
+            case MT(MOD_LALT, KC_S):
+            case MT(MOD_RALT, KC_L):
                 return FLOW_TAP_TERM*2;
 
             default:
