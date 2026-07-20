@@ -81,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [6] = LAYOUT_voyager(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, ST_MACRO_15,    ST_MACRO_16,    KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_RABK,        KC_MINUS,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LCBR,        KC_DLR,         KC_RCBR,        KC_HASH,        KC_TRANSPARENT, 
-    KC_TILD,        KC_PIPE,        KC_PLUS,        KC_AMPR,        KC_EQUAL,       KC_PERC,                                        KC_AT,          KC_LPRN,        KC_EXLM,        KC_RPRN,        KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_BSLS,        KC_ASTR,        KC_LABK,        KC_GRAVE,       ST_MACRO_14,                                    KC_TRANSPARENT, KC_LBRC,        KC_CIRC,        KC_RBRC,        KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_GRAVE,       LCTL(LSFT(KC_TAB)),LCTL(KC_TAB),   KC_RABK,        KC_MINUS,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_LCBR,        KC_RCBR,        KC_DLR,         KC_HASH,        KC_TRANSPARENT, 
+    KC_TILD,        KC_EXLM,        KC_PLUS,        KC_AMPR,        KC_EQUAL,       KC_PERC,                                        KC_AT,          KC_LPRN,        KC_RPRN,        KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_PIPE,        KC_ASTR,        KC_LABK,        KC_BSLS,        ST_MACRO_14,                                    KC_GRAVE,       KC_LBRC,        KC_RBRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [7] = LAYOUT_voyager(
